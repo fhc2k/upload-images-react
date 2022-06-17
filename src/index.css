@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        margin: 0;
+        width: 100%;
+        font-size: 0.95rem;
+        font-family: 'Poppins';
+        color: #9A9FB3;
+        background-color: #FFF;
+        letter-spacing: 0.015625em;
+    }
+    
+    p, h1, h2 {
+        margin: 0;
+    }
+}
+
+@layer components {
+    .button {
+        @apply w-full flex items-center justify-center gap-2 text-sm font-medium border-none outline-none py-3 px-5 rounded-xl cursor-pointer;
+    }
+
+    .button--primary {
+        @apply bg-blue-600 text-white;
+    }
+
+    .button--secondary {
+        @apply bg-gray-100 text-black;
+    }
+
+    .button--success {
+        @apply bg-green-500 text-white;
+    }
+
+    .button--warning {
+        @apply bg-yellow-500 text-white;
+    }
+
+    .button--error {
+        @apply bg-red-200 text-red-500;
+    }
+
+    .link {
+        @apply text-blue-600 cursor-pointer appearance-none hover:underline;
+    }
+
+    .box {
+        @apply bg-white flex flex-col items-center justify-center gap-8 px-8 py-12 rounded-xl shadow-lg;
+    }
+
+    .form {
+        @apply w-full flex flex-col gap-4;  
+    }
+
+    .form__field {
+        @apply flex flex-col items-start gap-3;
+    }
+
+    .form__field__label {
+        @apply font-medium text-black text-sm;
+    }
+
+    .form__field__text {
+        @apply w-full h-10 bg-gray-100 text-sm outline-none py-3 px-5 rounded-xl placeholder-gray-400 focus:border-2 focus:border-blue-600 read-only:cursor-not-allowed read-only:text-gray-500 transition-all duration-200;
+    }
+
+    .form__field--error > .form__field__label {
+        @apply text-red-400;
+    }
+    
+    .form__field--error > .form__field__text{
+        @apply bg-red-100 placeholder-red-500 focus:border-red-500;
+        animation: shake 0.1635s 0s 3;
+    }
+
+    .main__container {
+        @apply max-w-[1000px] container h-screen mx-auto flex flex-col gap-8 p-6 overflow-hidden;
+    }
+
+    .text--truncate {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+}
+
+.spinner {
+    animation: rotate 2s linear infinite;
+    color: #0066ff;
+}
+
+.spinner circle {
+    animation: spinner 1.5s ease-in-out infinite;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #a4bde3;
+    border-radius: 12px;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #0066ff;
+    border-radius: 12px;
+}
+
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
+@keyframes spinner {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(8px);
+    }
+    75% {
+        transform: translateX(-8px);
+    }
+}
+
