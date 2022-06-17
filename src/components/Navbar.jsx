@@ -3,6 +3,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { RenderIf } from "../utilities/RenderIf";
 import { useToggle } from "../hooks/useToggle";
 import { MenuIcon, XIcon, ChevronDownIcon, CollectionIcon, CloudUploadIcon } from "@heroicons/react/outline";
+import { MenuDropdown } from "./MenuDropdown";
 
 export const Navbar = () => {
 	const { user, handleOut } = useAuthContext();
