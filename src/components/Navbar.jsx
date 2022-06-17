@@ -23,8 +23,6 @@ export const Navbar = () => {
 
 	const menuIsVisible = visibleMenu ? "flex" : "hidden";
 
-	console.log(user);
-
 	return (
 		<nav className="sticky z-50 flex items-center justify-between">
 			<RenderIf isTrue={visibleMenu}>
