@@ -2,8 +2,15 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { RenderIf } from "../utilities/RenderIf";
 import { useToggle } from "../hooks/useToggle";
-import { MenuIcon, XIcon, ChevronDownIcon, CollectionIcon, CloudUploadIcon } from "@heroicons/react/outline";
-import { MenuDropdown } from "./MenuDropdown";
+import {
+	MenuIcon,
+	XIcon,
+	ChevronDownIcon,
+	CollectionIcon,
+	CloudUploadIcon,
+} from "@heroicons/react/outline";
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
 
 export const Navbar = () => {
 	const { user, handleOut } = useAuthContext();
@@ -15,6 +22,8 @@ export const Navbar = () => {
 		}`;
 
 	const menuIsVisible = visibleMenu ? "flex" : "hidden";
+
+	console.log(user);
 
 	return (
 		<nav className="sticky z-50 flex items-center justify-between">
@@ -44,19 +53,19 @@ export const Navbar = () => {
 				<li>
 					<NavLink to="files" className={itemIsActive}>
 						<CollectionIcon className="w-5 h-5 text-inherit" />
-						<span>Files</span>	
+						<span>Files</span>
 					</NavLink>
 				</li>
 				<li>
 					<NavLink to="upload" className={itemIsActive}>
 						<CloudUploadIcon className="w-5 h-5 text-inherit" />
-						<span>Upload File</span>	
+						<span>Upload File</span>
 					</NavLink>
 				</li>
 			</ul>
-			<MenuDropdown.menu>
-				<MenuDropdown.button>
-					{"photoURL" in user ? (
+			<Menu as="div" className="relative inline-block text-left">
+				<Menu.Button className="flex items-center gap-2">
+					{user.photoURL ? (
 						<img
 							src={user.photoURL}
 							className="w-8 h-8 rounded-full object-cover"
@@ -68,24 +77,39 @@ export const Navbar = () => {
 							</span>
 						</div>
 					)}
-					<ChevronDownIcon
-						onClick={toggleVisibleMenuDropdown}
-						className="w-5 h-5 text-black cursor-pointer"
-					/>
-				</MenuDropdown.button>
-				<MenuDropdown.transition>
-					{visibleMenuDropdown && (
-						<MenuDropdown.dropdown>
-							<MenuDropdown.item>
-								<Link to="account">Account Settings</Link>
-							</MenuDropdown.item>
-							<MenuDropdown.item>
-								<a onClick={handleOut}>Sign out</a>
-							</MenuDropdown.item>
-						</MenuDropdown.dropdown>
-					)}
-				</MenuDropdown.transition>
-			</MenuDropdown.menu>
+					<ChevronDownIcon className="w-5 h-5 text-black cursor-pointer" />
+				</Menu.Button>
+				<Transition
+					as={Fragment}
+					enter="transition ease-out duration-100"
+					enterFrom="transform opacity-0 scale-95"
+					enterTo="transform opacity-100 scale-100"
+					leave="transition ease-in duration-75"
+					leaveFrom="transform opacity-100 scale-100"
+					leaveTo="transform opacity-0 scale-95"
+				>
+					<Menu.Items className="absolute right-0 mt-2 w-56 bg-white origin-top-right rounded-lg shadow-lg z-10">
+						<div className="p-4">
+							<Menu.Item>
+								<Link
+									className={`text-gray-900 w-full flex items-center gap-4 rounded-md px-2 py-2 text-sm hover:bg-gray-100`}
+									to="account"
+								>
+									Account Settings
+								</Link>
+							</Menu.Item>
+							<Menu.Item>
+								<a
+									className={`text-red-500 w-full flex items-center gap-4 rounded-md px-2 py-2 text-sm hover:bg-gray-100 cursor-pointer`}
+									onClick={handleOut}
+								>
+									Sign out
+								</a>
+							</Menu.Item>
+						</div>
+					</Menu.Items>
+				</Transition>
+			</Menu>
 		</nav>
 	);
 };

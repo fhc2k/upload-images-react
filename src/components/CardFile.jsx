@@ -6,7 +6,6 @@ import {
 	PhotographIcon,
 } from "@heroicons/react/solid";
 import { Menu, Transition } from "@headlessui/react";
-import { MenuDropdown } from "./MenuDropdown";
 import { useToggle } from "../hooks/useToggle";
 import { Fragment } from "react";
 import { ClipboardCopyIcon, ExternalLinkIcon, TrashIcon } from "@heroicons/react/outline";
@@ -15,7 +14,6 @@ export const CardFile = ({ data }) => {
 	const { handleDeleteFile } = useAppContext();
 	const { fileUid, fileName, fileSize, fileUrl, fileDate } = data;
 	const [stateClipboard, setClipboard] = useClipboard("Copy");
-	const [visibleMenuDropdown, toggleVisibleMenuDropdown] = useToggle(false);
 
 	return (
 		<figure className="relative bg-slate-50 flex flex-col flex-auto px-4 py-6 rounded-lg">
@@ -28,7 +26,6 @@ export const CardFile = ({ data }) => {
 						<Menu.Button>
 							<DotsVerticalIcon
 								className="w-5 h-5 cursor-pointer"
-								onClick={toggleVisibleMenuDropdown}
 							/>
 						</Menu.Button>
 						<Transition
