@@ -16,7 +16,7 @@ export const appReducer = (state, action) => {
         case TYPES.DONE: 
             return { ...state, state: "done", url: action.payload };
         case TYPES.RESET: 
-            return { state: "upload", url: null };
+            return { ...state, state: "upload", url: null };
         default:
             return state;
     }
