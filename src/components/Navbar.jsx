@@ -43,7 +43,7 @@ export const Navbar = () => {
 				<li>
 					<NavLink
 						to="files"
-						className="text-base md:text-xl font-medium text-black cursor-pointer mr-4"
+						className="text-base md:text-xl font-medium text-black cursor-pointer"
 					>
 						Upload X
 					</NavLink>

@@ -30,7 +30,7 @@ export const UploadPage = () => {
 					Upload sucessfully!
 				</h2>
 				<img
-					className="w-full h-auto object-contain rounded-xl"
+					className="w-full  max-h-[200px] object-cover rounded-xl"
 					src={url}
 				/>
 				<div className="flex items-center gap-2 rounded-lg">

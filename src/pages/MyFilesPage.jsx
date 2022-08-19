@@ -2,7 +2,6 @@ import { useAppContext } from "../context/AppContext";
 import { CardFile } from "../components/CardFile";
 import { useNavigate } from "react-router-dom";
 import { Ring } from "@uiball/loaders";
-import { useState } from "react";
 
 export const MyFilesPage = () => {
 	const { state: { data, isLoading } } = useAppContext();
@@ -18,8 +17,8 @@ export const MyFilesPage = () => {
 
 	if (data.length) {
 		return (
-			<section className="w-full flex flex-col gap-6 min-h-full overflow-auto">
-				<div className="flex flex-col gap-2">
+			<section className="flex flex-col items-center gap-6 overflow-auto">
+				<div className="w-full flex flex-col gap-2">
 					<h1 className="text-xl font-medium text-black">
 						My Files - {data.length}
 					</h1>
@@ -27,7 +26,7 @@ export const MyFilesPage = () => {
 						Lorem ipsum dolor sit amet consectetur adipisicing elit.
 					</p>
 				</div>
-				<div className="flex flex-wrap gap-8">
+				<div className="flex flex-wrap gap-8 p-2 overflow-auto">
 					{data.map((item) => (
 						<CardFile key={item.fileUid} data={item} />
 					))}
