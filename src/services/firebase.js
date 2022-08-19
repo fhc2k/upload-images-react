@@ -4,12 +4,12 @@ import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAw_ZzjHKWI8D-Ee_oPA3sf5Ve17p_aM24",
-    authDomain: "upload-images-fb6d5.firebaseapp.com",
-    projectId: "upload-images-fb6d5",
-    storageBucket: "upload-images-fb6d5.appspot.com",
-    messagingSenderId: "88371987990",
-    appId: "1:88371987990:web:0c9e9075817952cc4cd737"
+    apiKey: import.meta.env.VITE_API_KEY,
+    authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -17,4 +17,4 @@ const db = getFirestore();
 const storage = getStorage();
 const auth = getAuth();
 
-export { db, storage, auth };
+export { app, db, storage, auth };
