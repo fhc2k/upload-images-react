@@ -32,7 +32,7 @@
     }
 
     .button--primary {
-        @apply bg-blue-600 text-white;
+        @apply bg-blue-600 text-white disabled:bg-blue-400 disabled:cursor-not-allowed;
     }
 
     .button--secondary {

@@ -9,7 +9,6 @@ import { ResetPasswordPage } from "./pages/ResetPasswordPage";
 import { VerifiEmailPage } from "./pages/VerifyEmailPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext } from "./context/AuthContext";
-import { AppContextProvider } from "./context/AppContext";
 import { Ring } from "@uiball/loaders";
 
 const App = () => {
